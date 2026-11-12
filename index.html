@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>calya's to-do ★ stitch ed.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Stitch Collage Background -->
+  <div class="bg-stitch-collage" id="bgStitchCollage" aria-hidden="true"></div>
+
+  <!-- Top Y2K Marquee Strip -->
+  <div class="y2k-marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>★ CALYA'S DAILY CHECKLIST</span>
+      <span>💙 STITCH APPROVED</span>
+      <span>🌺 OHANA ENERGY ONLY</span>
+      <span>✨ NO BAD VIBES</span>
+      <span>★ SLAY UR TASKS</span>
+      <span>★ CALYA'S DAILY CHECKLIST</span>
+      <span>💙 STITCH APPROVED</span>
+      <span>🌺 OHANA ENERGY ONLY</span>
+      <span>✨ NO BAD VIBES</span>
+      <span>★ SLAY UR TASKS</span>
+    </div>
+  </div>
+
+  <main class="app-container">
+    <!-- Bento / Scrapbook Header -->
+    <header class="bento-header">
+      <!-- Polaroid Stitch Card -->
+      <div class="polaroid-card" id="stitchMascot" title="klik buat ganti pose stitch!">
+        <div class="washi-tape"></div>
+        <div class="polaroid-frame">
+          <img
+            id="stitchImg"
+            class="stitch-photo"
+            src="titulo.jpg"
+            alt="Karakter Stitch"
+          />
+        </div>
+        <div class="polaroid-caption">
+          <span>stitch.jpg</span>
+          <span class="tap-pill">tap! ↻</span>
+        </div>
+      </div>
+
+      <!-- Title & Mood Note -->
+      <div class="journal-card">
+        <div class="journal-top-tags">
+          <span class="y2k-tag tag-blue">★ CALYA'S SPACE</span>
+          <span class="y2k-tag tag-pink">🌺 626 MODE</span>
+        </div>
+
+        <h1>calya’s<br />to-do list.</h1>
+        <p class="greeting" id="greetingText">halo calya! let's get things done 💙</p>
+
+        <div class="sticky-note" id="stitchQuote">
+          "ohana means nobody gets left behind — termasuk tugasmu hari ini, calya!"
+        </div>
+
+        <div class="stitch-gallery" id="stitchGallery" aria-label="Pilih gambar Stitch"></div>
+      </div>
+    </header>
+
+    <!-- Progress + Add Task Bento Row -->
+    <section class="progress-strip" aria-label="Progres Tugas">
+      <div class="progress-meta">
+        <span class="progress-label">⚡ progress bar</span>
+        <span class="progress-stats" id="progressStats">0 / 0 done (0%)</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+      </div>
+    </section>
+
+    <!-- Add Task Card -->
+    <section class="composer-card">
+      <form id="taskForm" class="task-form">
+        <div class="input-row">
+          <input
+            type="text"
+            id="taskInput"
+            placeholder="ketik tugas baru di sini..."
+            maxlength="120"
+            required
+            autocomplete="off"
+          />
+          <button type="submit" class="btn-add">
+            + add task
+          </button>
+        </div>
+
+        <div class="options-row">
+          <div class="option-chip">
+            <label for="taskCategory">tag:</label>
+            <select id="taskCategory">
+              <option value="Belajar">📚 belajar</option>
+              <option value="Rumah">🏠 rumah</option>
+              <option value="Hobi">🎨 hobi</option>
+              <option value="Belanja">🛍️ jajan/belanja</option>
+              <option value="Lainnya">💙 random</option>
+            </select>
+          </div>
+
+          <div class="option-chip">
+            <label for="taskPriority">vibe:</label>
+            <select id="taskPriority">
+              <option value="normal">✨ normal</option>
+              <option value="penting">🔥 urgent</option>
+              <option value="santai">☁️ santai</option>
+            </select>
+          </div>
+
+          <div class="option-chip">
+            <label for="taskDue">due:</label>
+            <input type="date" id="taskDue" />
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- Filter & Search -->
+    <section class="controls-bar">
+      <div class="filter-tabs" role="tablist">
+        <button class="tab-btn active" data-filter="all" type="button">all</button>
+        <button class="tab-btn" data-filter="active" type="button">to-do</button>
+        <button class="tab-btn" data-filter="completed" type="button">done ✓</button>
+      </div>
+
+      <div class="search-box">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="searchInput" placeholder="cari tugas..." autocomplete="off" />
+      </div>
+    </section>
+
+    <!-- Task List -->
+    <section class="notebook-card">
+      <ul id="taskList" class="task-list"></ul>
+
+      <div id="emptyState" class="empty-state hidden">
+        <img
+          src="348043877472708984.jpg"
+          alt="Stitch santai"
+          class="empty-stitch-img"
+        />
+        <h3>kosong nih, bestie!</h3>
+        <p>belum ada tugas di tab ini. tambahin dulu di atas biar stitch bantuin ingetin 💙</p>
+      </div>
+
+      <div class="list-footer" id="listFooter">
+        <span id="remainingCount">0 left to do</span>
+        <button type="button" id="clearCompletedBtn" class="btn-clear">
+          clear done ✕
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <div id="sparkleLayer" class="sparkle-layer" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
